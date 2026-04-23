@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.controller.InfraccionController">
+
+    <padding>
+        <Insets bottom="15" left="15" right="15" top="15" />
+    </padding>
+
+    <!-- TITULO -->
+    <Label style="-fx-font-size:20px; -fx-font-weight:bold;" text="Padrón de Infracciones Vehiculares" />
+
+    <HBox spacing="20">
+
+        <!-- FORMULARIO -->
+        <VBox prefWidth="350" spacing="10" style="-fx-border-color:#ccc; -fx-padding:15; -fx-border-radius:10;">
+
+            <Label style="-fx-font-weight:bold;" text="Registro de Infracción" />
+
+            <GridPane hgap="10" vgap="10">
+
+                <Label text="Número De Placa:" GridPane.rowIndex="0" />
+                <TextField fx:id="txtPlaca" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label text="Nombre Del Infractor:" GridPane.rowIndex="1" />
+                <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="Fecha:" GridPane.rowIndex="2" />
+                <TextField fx:id="txtFecha" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <Label text="Tipo De Infracción:" GridPane.rowIndex="3" />
+                <TextField fx:id="txtTipo" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                <Label text="Monto A Pagar:" GridPane.rowIndex="4" />
+                <TextField fx:id="txtMonto" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                <Label text="Estado Del Pago:" GridPane.rowIndex="5" />
+                <ComboBox fx:id="cbEstado" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+
+            </GridPane>
+
+        </VBox>
+
+        <!-- BOTONES -->
+        <VBox alignment="CENTER" spacing="10">
+
+            <Button onAction="#agregar" text="Agregar">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-primary" />
+                </styleClass>
+            </Button>
+
+            <Button onAction="#editar" text="Editar">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-warning" />
+                </styleClass>
+            </Button>
+
+            <Button onAction="#eliminar" text="Eliminar">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-danger" />
+                </styleClass>
+            </Button>
+
+            <Button onAction="#limpiar" text="Limpiar">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-success" />
+                </styleClass>
+            </Button>
+
+        </VBox>
+
+        <!-- FILTRO + TOTAL -->
+        <VBox prefWidth="250" spacing="15" style="-fx-border-color:#ccc; -fx-padding:15; -fx-border-radius:10;">
+
+            <Label style="-fx-font-weight:bold;" text="Filtrar por Estado" />
+
+            <ComboBox fx:id="cbFiltroEstado" />
+
+            <Button onAction="#filtrar" text="Filtrar">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-primary" />
+                </styleClass>
+            </Button>
+
+            <Label fx:id="lblTotal" style="-fx-font-weight:bold;" text="Total de Infracciones: 0" />
+
+        </VBox>
+
+    </HBox>
+
+    <!-- TABLA -->
+    <VBox spacing="10">
+
+        <Label style="-fx-font-weight:bold;" text="Listado de Infracciones" />
+
+        <TableView fx:id="tabla" prefHeight="250">
+
+            <columns>
+                <TableColumn fx:id="colIndex" prefWidth="40" text="#" />
+                <TableColumn fx:id="colPlaca" text="Placa" />
+                <TableColumn fx:id="colNombre" text="Infractor" />
+                <TableColumn fx:id="colFecha" text="Fecha" />
+                <TableColumn fx:id="colTipo" text="Tipo" />
+                <TableColumn fx:id="colMonto" text="Monto" />
+                <TableColumn fx:id="colEstado" text="Estado" />
+            </columns>
+
+        </TableView>
+
+    </VBox>
+
+    <!-- ACTUALIZAR ESTADO -->
+    <VBox spacing="10" style="-fx-border-color:#ccc; -fx-padding:10; -fx-border-radius:10;">
+
+        <Label style="-fx-font-weight:bold;" text="Actualizar Estado" />
+
+        <HBox spacing="10">
+            <ComboBox fx:id="cbNuevoEstado" />
+
+            <Button onAction="#actualizarEstado" text="Actualizar Estado">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-info" />
+                </styleClass>
+            </Button>
+        </HBox>
+
+    </VBox>
+
+</VBox>
