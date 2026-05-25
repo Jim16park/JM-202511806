@@ -1,11 +1,15 @@
-module InfraccionVehicular {
+module pe.edu.upeu {
 
     requires javafx.controls;
     requires javafx.fxml;
 
+    requires static lombok;
+
     requires org.kordamp.bootstrapfx.core;
 
-    opens pe.edu.upeu to javafx.fxml;
+    requires org.xerial.sqlitejdbc;
+    requires java.sql;
+
     opens pe.edu.upeu.controller to javafx.fxml;
 
     exports pe.edu.upeu;

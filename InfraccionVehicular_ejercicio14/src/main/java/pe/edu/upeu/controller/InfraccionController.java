@@ -22,7 +22,7 @@ public class InfraccionController {
 
     @FXML private Label lblTotal;
 
-    private InfraccionRepository repo = new InfraccionRepository();
+    private InfraccionRepository repo = InfraccionRepository.getInstance();
     private ObservableList<Infraccion> lista = FXCollections.observableArrayList();
 
     @FXML
@@ -46,15 +46,8 @@ public class InfraccionController {
 
         tabla.setItems(lista);
 
+        lista.addAll(repo.listar());
         actualizarTotal();
-
-        Infraccion i1 = new Infraccion("ABC-123","Juan Perez","20/05/2025","Exceso de velocidad",250.0,"Pendiente");
-        Infraccion i2 = new Infraccion("DEF-456","Maria Lopez","18/05/2025","No usar cinturón",150.0,"Pagada");
-
-        repo.guardar(i1);
-        repo.guardar(i2);
-
-        lista.addAll(i1, i2);
     }
 
     @FXML
@@ -90,14 +83,19 @@ public class InfraccionController {
             }
         }
 
+    @FXML
     public void eliminar() {
 
-        int index = tabla.getSelectionModel().getSelectedIndex();
+        Infraccion i =
+                tabla.getSelectionModel().getSelectedItem();
 
-        if(index >= 0){
-            repo.eliminar(index);
-            lista.remove(index);
+        if(i != null){
+            repo.eliminar(i.getPlaca());
+            lista.remove(i);
             actualizarTotal();
+            mostrarInfo("Infracción eliminada");
+        } else {
+            mostrarError("Seleccione una infracción");
         }
     }
 
