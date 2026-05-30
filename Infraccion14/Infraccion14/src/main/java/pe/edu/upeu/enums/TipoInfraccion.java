@@ -4,23 +4,21 @@ import lombok.Getter;
 
 @Getter
 public enum TipoInfraccion {
-    SEDAN("Sedán","SE"),
-    SUV("SUV", "SU"),
-    CAMIONETA("Camioneta", "CA"),
-    DEPORTIVO("Deportivo","DE"),
-    ELECTRICO("Eléctrico", "EL");
 
-    private final String nombre, iniciales;
+    EXCESO_VELOCIDAD("Exceso de velocidad"),
+    MAL_ESTACIONADO("Mal estacionado"),
+    SIN_LICENCIA("Sin licencia"),
+    LUZ_ROJA("Pasó luz roja"),
+    DOCUMENTOS("Documentos vencidos");
 
-    TipoInfraccion(String nombre, String iniciales){
-        this.nombre=nombre;
-        this.iniciales=iniciales;
+    private final String nombre;
+
+    TipoInfraccion(String nombre){
+        this.nombre = nombre;
     }
 
-    //Aplicando Polimorfismo
     @Override
     public String toString() {
-        return  "{\"nombre\":\""+nombre+"\",\"iniciales\":\""+iniciales+"\"}";
-        //return nombre+"\t"+iniciales;
+        return nombre;
     }
 }
