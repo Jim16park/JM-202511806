@@ -1,0 +1,8 @@
+# Forzar que GitHub Linguist cuente solo Java
+*.fxml       linguist-vendored=true
+*.jrxml      linguist-vendored=true
+*.sql        linguist-vendored=true
+*.properties linguist-vendored=true
+*.xml        linguist-vendored=true
+*.css        linguist-vendored=true
+*.md         linguist-documentation=true
